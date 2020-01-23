@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"log"
 	"net/http"
 	"os"
@@ -9,10 +10,14 @@ import (
 )
 
 func main() {
+	rawWordsPath := flag.String("raw-words-path", "/etc/xkcd-password/words-raw.txt",
+		"The path to a list of common english words. One on each line")
+	flag.Parse()
+
 	// Check that the word file is ready
 	preparedFilePath := "words.txt"
 	if _, err := os.Stat(preparedFilePath); os.IsNotExist(err) {
-		prepareWordFile("words-raw.txt", preparedFilePath)
+		prepareWordFile(*rawWordsPath, preparedFilePath)
 	}
 
 	log.Println("Starting webserver. Listening on port 8080")
