@@ -38,12 +38,9 @@ func checkAndPanic(err error) {
 }
 
 func prepareWordFile(rawFilePath string, preparedFilePath string) {
-	file, err := os.Open(rawFilePath)
-	checkAndPanic(err)
 
+	scanner, file := GetWordFileScanner(rawFilePath)
 	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
 
 	f, err := os.Create(preparedFilePath)
 	checkAndPanic(err)
@@ -60,4 +57,13 @@ func prepareWordFile(rawFilePath string, preparedFilePath string) {
 
 	err = scanner.Err()
 	checkAndLog(err)
+}
+
+// GetWordFileScanner returns a bufio.Scanner for the given wordFilePath. Also returns the open os.File
+// object which the calling function should Close()
+func GetWordFileScanner(wordFilePath string) (*bufio.Scanner, *os.File) {
+	file, err := os.Open(wordFilePath)
+	checkAndPanic(err)
+
+	return bufio.NewScanner(file), file
 }
