@@ -14,10 +14,41 @@
     font-size: 18pt;
   }
   div#text {
-    max-width: 40em;
+    max-width: 30em;
+    font-size: 1em;
+    border: 1px solid;
+    padding: 0.5em;
+    margin-bottom: 1em;
   }
   h1 { 
     line-height: 150%; 
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  form li + li {
+    margin-top: 1em;
+  }
+
+  label {
+    display: inline-block;
+    text-align: right;
+    font-size: 0.75em;
+  }
+
+  select {
+    font-size: 0.75em;
+    width: 200px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+  }
+
+  button {
+    height: 2em;
   }
 </style>
 </head>
@@ -28,6 +59,29 @@
     <p>
       {{.GeneratedPassword}}
     </p>
+    <p>
+      <button>Copy to Clipboard</button>
+    </p>
+  </div>
+  <div>
+    <form>
+      <ul>
+        <li class="button">
+          <button type="submit">Generate Another!</button>
+        </li>
+        <li>
+         <label for="wordCount">Number Of Words:</label>
+         <select id="wordCount" name="wordCount">
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+       </li>
+      </ul>
+     </form>
   </div>
 </body>
 </html>
