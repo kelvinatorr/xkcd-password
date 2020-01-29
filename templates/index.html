@@ -70,14 +70,14 @@
           <button type="submit">Generate Another!</button>
         </li>
         <li>
-         <label for="wordCount">Number Of Words:</label>
-         <select id="wordCount" name="wordCount">
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
+         <label for="numberOfWords">Number Of Words:</label>
+         <select id="numberOfWords" name="numberOfWords">
+          <option {{if eq .NumberOfWords 3}} selected {{ end }}>3</option>
+          <option {{if eq .NumberOfWords 4}} selected {{ end }}>4</option>
+          <option {{if eq .NumberOfWords 5}} selected {{ end }}>5</option>
+          <option {{if eq .NumberOfWords 6}} selected {{ end }}>6</option>
+          <option {{if eq .NumberOfWords 7}} selected {{ end }}>7</option>
+          <option {{if eq .NumberOfWords 8}} selected {{ end }}>8</option>
         </select>
        </li>
       </ul>
