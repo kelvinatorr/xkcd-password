@@ -27,12 +27,13 @@ func main() {
 
 func checkAndLog(err error) {
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 }
 
 func checkAndPanic(err error) {
 	if err != nil {
+		// Panic but don't exit
 		panic(err)
 	}
 }
