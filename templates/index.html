@@ -56,11 +56,13 @@
 <body>
   <h1>XKCD Style Password Generator</h1>
   <div id="text">
-    <p>
+    <p id="generatedPassword">
       {{.GeneratedPassword}}
     </p>
     <p>
-      <button>Copy to Clipboard</button>
+      <button id="copyButton" data-clipboard-target="#generatedPassword">
+        Copy to Clipboard
+      </button>
     </p>
   </div>
   <div>
@@ -83,5 +85,9 @@
       </ul>
      </form>
   </div>
+  <script src="static/js/clipboard.min.js"></script>
+  <script>
+    const clipboard = new ClipboardJS('#copyButton');
+  </script>
 </body>
 </html>
