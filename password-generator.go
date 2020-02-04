@@ -35,7 +35,7 @@ func GeneratePassword(wordCount int) string {
 		}
 	}
 	// Extract these words from the file
-	scanner, file := GetWordFileScanner("words.txt")
+	scanner, file := getWordFileScanner("words.txt")
 	defer file.Close()
 
 	lineNumber := 0

@@ -46,7 +46,7 @@ func main() {
 	}
 
 	log.Println("Starting webserver. Listening on port 8080")
-	http.HandleFunc("/", IndexHandler)
+	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/about", func(w http.ResponseWriter, req *http.Request) {
 		var data interface{}
 		t, _ := template.ParseFiles("templates/about.html")
@@ -73,7 +73,7 @@ func checkAndPanic(err error) {
 
 func prepareWordFile(rawFilePath string, preparedFilePath string) {
 
-	scanner, file := GetWordFileScanner(rawFilePath)
+	scanner, file := getWordFileScanner(rawFilePath)
 	defer file.Close()
 
 	f, err := os.Create(preparedFilePath)
@@ -93,9 +93,9 @@ func prepareWordFile(rawFilePath string, preparedFilePath string) {
 	checkAndLog(err)
 }
 
-// GetWordFileScanner returns a bufio.Scanner for the given wordFilePath. Also returns the open os.File
+// getWordFileScanner returns a bufio.Scanner for the given wordFilePath. Also returns the open os.File
 // object which the calling function should Close()
-func GetWordFileScanner(wordFilePath string) (*bufio.Scanner, *os.File) {
+func getWordFileScanner(wordFilePath string) (*bufio.Scanner, *os.File) {
 	file, err := os.Open(wordFilePath)
 	checkAndPanic(err)
 

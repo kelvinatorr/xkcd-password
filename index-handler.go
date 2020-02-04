@@ -6,16 +6,16 @@ import (
 	"text/template"
 )
 
-// IndexPage struct to fill in the index.html template
-type IndexPage struct {
+// indexPage struct to fill in the index.html template
+type indexPage struct {
 	GeneratedPassword string
 	NumberOfWords     int
 }
 
-// IndexHandler Handler for the / path
-func IndexHandler(w http.ResponseWriter, r *http.Request) {
+// indexHandler Handler for the / path
+func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		FourZeroFourHandler(w, r, http.StatusNotFound)
+		fourZeroFourHandler(w, r, http.StatusNotFound)
 		return
 	}
 	getParams := r.URL.Query()
@@ -29,7 +29,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	// Get number of words from the GET params.
 	password := GeneratePassword(numberOfWords)
-	indexPage := IndexPage{GeneratedPassword: password, NumberOfWords: numberOfWords}
 	t, _ := template.ParseFiles("templates/index.html")
-	t.Execute(w, indexPage)
+	t.Execute(w, indexPage{GeneratedPassword: password, NumberOfWords: numberOfWords})
 }
