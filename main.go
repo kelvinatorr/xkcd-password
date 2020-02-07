@@ -82,10 +82,15 @@ func prepareWordFile(rawFilePath string, preparedFilePath string) {
 
 	w := bufio.NewWriter(f)
 
+	wordDeDuper := make(map[string]bool)
 	for scanner.Scan() {
-		s := scanner.Text()
-		_, err := w.WriteString(strings.TrimSpace(s) + "\n")
-		checkAndLog(err)
+		s := strings.ToLower(strings.TrimSpace(scanner.Text()))
+		// Do not allow duplicates
+		if _, dupe := wordDeDuper[s]; !dupe {
+			_, err := w.WriteString(s + "\n")
+			checkAndLog(err)
+			wordDeDuper[s] = true
+		}
 	}
 
 	w.Flush()
