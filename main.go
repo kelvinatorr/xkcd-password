@@ -10,6 +10,8 @@ import (
 	"text/template"
 )
 
+var preparedFilePath string = "words.txt"
+
 type fileSystem struct {
 	fs http.FileSystem
 }
@@ -40,7 +42,6 @@ func main() {
 	flag.Parse()
 
 	// Check that the word file is ready
-	preparedFilePath := "words.txt"
 	if _, err := os.Stat(preparedFilePath); os.IsNotExist(err) {
 		prepareWordFile(*rawWordsPath, preparedFilePath)
 	}

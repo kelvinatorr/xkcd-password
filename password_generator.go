@@ -12,7 +12,7 @@ import (
 // GeneratePassword generates a xkcd style password.
 func GeneratePassword(wordCount int) string {
 	// Read the word file
-	f, err := os.Open("words.txt")
+	f, err := os.Open(preparedFilePath)
 	checkAndPanic(err)
 	numberOfWords, _ := lineCounter(f)
 	// If there are less words than the requested number, make the requested number
@@ -35,7 +35,7 @@ func GeneratePassword(wordCount int) string {
 		}
 	}
 	// Extract these words from the file
-	scanner, file := getWordFileScanner("words.txt")
+	scanner, file := getWordFileScanner(preparedFilePath)
 	defer file.Close()
 
 	lineNumber := 0
