@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"strings"
-	"text/template"
 )
 
 var preparedFilePath string = "words.txt"
@@ -48,11 +47,7 @@ func main() {
 
 	log.Println("Starting webserver. Listening on port 8080")
 	http.HandleFunc("/", indexHandler)
-	http.HandleFunc("/about", func(w http.ResponseWriter, req *http.Request) {
-		var data interface{}
-		t, _ := template.ParseFiles("templates/about.html")
-		t.Execute(w, data)
-	})
+	http.HandleFunc("/about", aboutHandler)
 	// Handle files in the static directory
 	fs := http.FileServer(fileSystem{http.Dir("static")})
 	http.Handle("/static/", http.StripPrefix("/static", fs))
