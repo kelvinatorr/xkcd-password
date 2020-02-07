@@ -6,4 +6,4 @@ American English words. I created the word list by combining lists from [https:/
 
 # Why
 
-I created this to learn Go. I wanted to learn how to handle http routes, read and write files, use HTML templates, manipulate Go variables, and write unit tests.
+I created this to learn Go. I wanted to learn how to handle HTTP routes, read and write files, use HTML templates, manipulate Go variables, and write unit tests.
