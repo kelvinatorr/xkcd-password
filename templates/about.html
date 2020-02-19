@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About XKCD Style Password Generator</title>
+<style>
+  body {
+    background: #eeeeee;
+    color: #000040;
+    font-family: roboto, verdana, arial, serif;
+    margin: 3em;
+    line-height: 140%;
+    font-size: 18pt;
+  }
+  div#text {
+    max-width: 30em;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+  h1 { 
+    line-height: 150%; 
+  }
+
+  button {
+    height: 2em;
+  }
+
+  a {
+    color: #000040;
+  }
+
+  img {
+      max-width: 100%;
+  }
+</style>
+</head>
+
+<body>
+  <h1>About</h1>
+  <div>
+    <p>
+      This was inspired by <a href="https://xkcd.com/936/">XKCD comic 936</a>. 
+      These passwords are supposedly easy to remember for humans but hard to guess for computers.
+    </p>
+  </div>
+  <div>
+    <img src="https://imgs.xkcd.com/comics/password_strength.png"/>
+  </div>
+  <div>
+      <p>
+        I created it to learn how to make a basic web app in Go. It randomly selects from a list of the {{.WordCount}} most common 
+        American English words. I created the word list by combining lists from <a href="https://www.wordfrequency.info/">here</a> and 
+        <a href="http://jbauman.com/aboutgsl.html">here</a>.
+        You can view the source code including the words on <a href="https://github.com/kelvinatorr/xkcd-password">Github</a>.
+      </p>      
+  </div>
+</body>
+</html>

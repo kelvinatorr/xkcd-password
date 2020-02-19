@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XKCD Style Password Generator</title>
+<style>
+  body {
+    background: #eeeeee;
+    color: #000040;
+    font-family: roboto, verdana, arial, serif;
+    margin: 3em;
+    line-height: 140%;
+    font-size: 18pt;
+  }
+  div#text {
+    max-width: 30em;
+    font-size: 1em;
+    border: 1px solid;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+  h1 { 
+    line-height: 150%; 
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  form li + li {
+    margin-top: 1em;
+  }
+
+  label {
+    display: inline-block;
+    text-align: right;
+    font-size: 0.75em;
+  }
+
+  select {
+    font-size: 0.75em;
+    width: 200px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+  }
+
+  button {
+    height: 2em;
+  }
+
+  a {
+    color: #000040;
+    font-size: 0.75em;
+  }
+</style>
+</head>
+
+<body>
+  <h1>XKCD Style Password Generator</h1>
+  <div id="text">
+    <p id="generatedPassword">
+      {{.GeneratedPassword}}
+    </p>
+    <p>
+      <button id="copyButton" data-clipboard-target="#generatedPassword">
+        Copy to Clipboard
+      </button>
+    </p>
+  </div>
+  <div>
+    <form>
+      <ul>
+        <li class="button">
+          <button type="submit">Generate Another!</button>
+        </li>
+        <li>
+         <label for="numberOfWords">Number Of Words:</label>
+         <select id="numberOfWords" name="numberOfWords">
+          <option {{if eq .NumberOfWords 3}} selected {{ end }}>3</option>
+          <option {{if eq .NumberOfWords 4}} selected {{ end }}>4</option>
+          <option {{if eq .NumberOfWords 5}} selected {{ end }}>5</option>
+          <option {{if eq .NumberOfWords 6}} selected {{ end }}>6</option>
+          <option {{if eq .NumberOfWords 7}} selected {{ end }}>7</option>
+          <option {{if eq .NumberOfWords 8}} selected {{ end }}>8</option>
+        </select>
+       </li>
+      </ul>
+     </form>
+  </div>
+  <div>
+    <p>
+      <a class="link" href="/about">
+        About
+      </a>
+    </p>
+  </div>
+  <script src="static/js/clipboard.min.js"></script>
+  <script>
+    const clipboard = new ClipboardJS('#copyButton');
+  </script>
+</body>
+</html>
