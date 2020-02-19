@@ -7,3 +7,10 @@ American English words. I created the word list by combining lists from [https:/
 # Why
 
 I created this to learn Go. I wanted to learn how to handle HTTP routes, read and write files, use HTML templates, manipulate Go variables, and write unit tests.
+
+# Running with Docker
+
+```
+docker build -t xkcd-password .
+docker run --restart always --name xkcd-password-0 -p 3002:8080 -d xkcd-password
+```

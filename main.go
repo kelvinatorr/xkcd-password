@@ -51,7 +51,7 @@ func main() {
 	// Handle files in the static directory
 	fs := http.FileServer(fileSystem{http.Dir("static")})
 	http.Handle("/static/", http.StripPrefix("/static", fs))
-	http.ListenAndServe("localhost:8080", nil)
+	http.ListenAndServe("0.0.0.0:8080", nil)
 }
 
 func checkAndLog(err error) {
