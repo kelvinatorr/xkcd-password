@@ -61,9 +61,8 @@
 <body>
   <h1>XKCD Style Password Generator</h1>
   <div id="text">
-    <p id="generatedPassword">
-      {{.GeneratedPassword}}
-    </p>
+    <!-- Don't add new lines or indentation here. https://github.com/zenorocha/clipboard.js/issues/147 -->
+    <p id="generatedPassword">{{.GeneratedPassword}}</p>
     <p>
       <button id="copyButton" data-clipboard-target="#generatedPassword">
         Copy to Clipboard
