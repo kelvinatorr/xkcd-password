@@ -1,9 +1,12 @@
 FROM golang:1.20
 
-WORKDIR /go/src/app
-COPY . .
+WORKDIR /usr/src/app
 
-RUN go get -d -v ./...
-RUN go install -v ./...
+# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
+COPY go.mod ./
+RUN go mod download && go mod verify
+
+COPY . .
+RUN go build -v -o /usr/local/bin/app ./...
 
 CMD ["app"]
